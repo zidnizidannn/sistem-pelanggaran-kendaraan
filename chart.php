@@ -72,7 +72,7 @@
                         window.location.href = "chartBulanan.php";
                         break;
                     case "tahun":
-                        window.location.href = "halaman_tahun.html";
+                        window.location.href = "chartTahunan.php";
                         break;
                     default:
                         break;

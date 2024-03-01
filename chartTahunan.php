@@ -42,13 +42,6 @@
                         </span>
                     </a>
 
-                    <div class="dropdown" id="bulan">
-                        <button class="btn dropdown-toggle" type="button" id="dropdownMenu" data-bs-toggle="dropdown" aria-expanded="false">
-                            Bulan
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu"></ul>
-                    </div>
-
                     <div class="dropdown" id="tahun">
                         <button class="btn dropdown-toggle" type="button" id="dropdownMenu" data-bs-toggle="dropdown" aria-expanded="false">
                             Tahun
@@ -68,12 +61,7 @@
     <script src="/js/home.js"></script>
     <script src="/js/chart.js"></script>
     <script>
-        generateDrowdownItem('#bulan.dropdown .dropdown-menu', NAMA_BULAN);
         generateDrowdownItem('#tahun.dropdown .dropdown-menu', 2023, year);
-        attachItemClickHandler('bulan', m => {
-            month = parseInt(m);
-            updateDateItem();
-        });
         attachItemClickHandler('tahun', y => {
             year = parseInt(y);
             updateDateItem();
@@ -81,9 +69,9 @@
 
         document.querySelector('.go').addEventListener('click', function(e) {
             e.preventDefault();
-            fetch(`/_getMonthlyData.php?y=${year}&m=${month+1}`)
+            fetch(`/_getYearlyData.php?y=${year}`)
                 .then(result => result.json())
-                .then(data => makeChart(data, "Jumlah Pelanggaran per Bulan"));
+                .then(data => makeChart(data, "Jumlah Pelanggaran per Tahun"));
         });
     </script>
 </body>

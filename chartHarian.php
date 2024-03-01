@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <script src="assets/bootstrap.bundle.min.js"></script>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script> -->
     <style>
         .sidebar .menu #chart {
             background-color: #0087CC;
@@ -46,78 +46,60 @@
                         <button class="btn dropdown-toggle" type="button" id="dropdownMenu  " data-bs-toggle="dropdown" aria-expanded="false">
                             Tanggal
                         </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
-                            <?php
-                            // include '_connDb.php';
-                            // $conn = connectDatabase();
-
-                            // $sql = "SELECT DATE_FORMAT(tanggal, '%d') AS tanggal FROM data_pelanggaran ORDER BY tanggal";
-                            // $result = mysqli_query($conn, $sql);
-                            // while ($row = mysqli_fetch_assoc($result)) {
-                            //     $tanggal = $row['tanggal'];
-
-                            //     echo "<li><a class='dropdown-item' href='#'>" . $tanggal . "</a></li>";
-                            // }
-                            for ($i = 1; $i < 31; $i++) {
-                                echo "<li><a class='dropdown-item' href='#'>" . $i . "</a></li>";
-                            }
-                            ?>
-                        </ul>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu"></ul>
                     </div>
 
                     <div class="dropdown" id="bulan">
                         <button class="btn dropdown-toggle" type="button" id="dropdownMenu" data-bs-toggle="dropdown" aria-expanded="false">
                             Bulan
                         </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
-                            <?php
-                            for ($m = 1; $m <= 12; ++$m) {
-                                echo "<li><a class='dropdown-item' href='#'>" . date('F', mktime(0, 0, 0, $m, 1)) . "</a></li>";
-                            }
-                            ?>
-                        </ul>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu"></ul>
                     </div>
 
                     <div class="dropdown" id="tahun">
                         <button class="btn dropdown-toggle" type="button" id="dropdownMenu" data-bs-toggle="dropdown" aria-expanded="false">
                             Tahun
                         </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
-                            <li><a class="dropdown-item" href="#">2023</a></li>
-                            <li><a class="dropdown-item" href="#">2024</a></li>
-                        </ul>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu"></ul>
                     </div>
 
                     <input class="go" type="submit" value="GO">
 
                 </form>
                 <!-- grafik -->
-                <canvas class="" id="myChart" style="max-width:75%; max-height:85% ;background-color:white; display: none;"></canvas>
+                <canvas class="" id="myChart" style="max-width:75%; max-height:85%; background-color: white; margin: 3em 0em"></canvas>
             </div>
         </div>
     </div>
 
     <script src="/js/home.js"></script>
+    <script src="/js/chart.js"></script>
     <script>
-        function updateText(dropdown, toggle) {
-            dropdown.addEventListener('click', function(e) {
-                if (e.target.classList.contains('dropdown-item')) {
-                    const selection = e.target.textContent;
-                    toggle.textContent = selection;
-                }
-            });
+        function updateDateItem() {
+            generateDrowdownItem('#tanggal.dropdown .dropdown-menu', 1, new Date(year, month + 1, 0).getDate());
         }
-        const dropdownHari = document.getElementById('tanggal');
-        const optionHari = dropdownHari.querySelector('.dropdown-toggle');
-        updateText(dropdownHari, optionHari);
 
-        const dropdownBulan = document.getElementById('bulan');
-        const optionBulan = dropdownBulan.querySelector('.dropdown-toggle');
-        updateText(dropdownBulan, optionBulan);
+        updateDateItem();
+        generateDrowdownItem('#bulan.dropdown .dropdown-menu', NAMA_BULAN);
+        generateDrowdownItem('#tahun.dropdown .dropdown-menu', 2023, year);
+        attachItemClickHandler('tanggal', d => {
+            date = parseInt(d);
+        });
+        attachItemClickHandler('bulan', m => {
+            month = parseInt(m);
+            updateDateItem();
+        });
+        attachItemClickHandler('tahun', y => {
+            year = parseInt(y);
+            updateDateItem();
+        });
 
-        const dropdownTahun = document.getElementById('tahun');
-        const optionTahun = dropdownTahun.querySelector('.dropdown-toggle');
-        updateText(dropdownTahun, optionTahun);
+        document.querySelector('.go').addEventListener('click', function(e) {
+            e.preventDefault();
+            fetch(`/_getDailyData.php?y=${year}&m=${month+1}&d=${date}`)
+                .then(result => result.json())
+                .then(data => makeChart(data, "Jumlah Pelanggaran per Hari"));
+        });
     </script>
 </body>
 
