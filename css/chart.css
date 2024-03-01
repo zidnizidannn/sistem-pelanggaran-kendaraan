@@ -1,0 +1,62 @@
+@import url("font.css");
+.container1 {
+  min-height: 100%;
+}
+.container1 .option {
+  margin-top: 3rem;
+}
+.container1 .option input[type=submit] {
+  border-radius: 15px;
+}
+.container1 .option .option-list input[type=radio] {
+  display: none;
+}
+.container1 .option .option-list input[type=radio]:checked + label {
+  background: #00547F;
+}
+.container1 .option .option-list label {
+  width: 10rem;
+  height: 3rem;
+  padding: 0.5rem;
+  margin: 0 5rem;
+  background-color: #0087CC;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  transition: 0.1s;
+  border-radius: 15px;
+}
+.container1 .option .go {
+  background-color: rgb(255, 255, 255);
+  width: 3rem;
+}
+.container1 .option-harian {
+  margin-top: 3rem;
+  display: flex;
+}
+.container1 .option-harian .dropdown {
+  text-align: center;
+  height: 3rem;
+  width: 10rem;
+  padding: 0.5rem;
+  margin: 0 5rem;
+  background-color: #0087CC;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  transition: 0.1s;
+  border-radius: 15px;
+}
+.container1 .option-harian .dropdown .btn {
+  color: rgb(255, 255, 255);
+}
+.container1 .option-harian .dropdown .dropdown-menu {
+  max-height: 200px;
+  overflow-y: auto;
+}
+.container1 .option-harian .go {
+  background-color: rgb(255, 255, 255);
+  border-radius: 15px;
+  width: 3rem;
+  height: 3rem;
+}
+
+/*# sourceMappingURL=chart.css.map */

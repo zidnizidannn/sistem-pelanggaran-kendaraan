@@ -1,0 +1,79 @@
+@import url('font.css');
+
+html {
+    font-size: 16px;
+    color: #181818;
+}
+
+body {
+    /* background-image: url("assets/BE\ BRAVE!.png"); */
+    height: 100vh;
+}
+
+.login,
+.register {
+    color: #0087CC;
+}
+
+.btn {
+    background-color: #0087CC;
+    color: white;
+}
+
+.btn:hover {
+    color: black;
+}
+
+.card {
+    color: white;
+    background-color: rgb(255, 255, 255);
+}
+
+.main-index,
+.container {
+    background-image: url('/material/index.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-position: center; */
+    height: 100vh;
+}
+
+.main-content {
+    background-image: url("/material/homepage.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-position: center; */
+    /* height: 100vh; */
+    background-color: rgb(255, 255, 255);
+    flex-grow: 1;
+}
+
+/* .buttons-pdf, .buttons-excel, .buttons-copy */
+.header-print, .datetime, .col-sm-12.col-md-6 {
+    display: none;
+}
+
+@media print{
+    .header-print, .datetime {
+        display: block;
+    }
+
+    .dataTables_wrapper .dataTables_filter,
+    .dataTables_wrapper .dataTables_info,
+    .dataTables_wrapper .dt-buttons,
+    .print, .sidebar, .header, .pagination, .dropdown {
+        display: none !important;
+    }
+
+    .table{
+        margin-left: px;
+    }
+
+    .header-print{
+        margin-top: 10%;
+    }
+
+    .gambar{
+        width: 85px !important;
+    }
+}

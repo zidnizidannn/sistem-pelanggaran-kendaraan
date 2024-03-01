@@ -1,0 +1,36 @@
+@font-face {
+    font-family: 'boldfont';
+    src: url(font/THE\ BOLD\ FONT.ttf);
+}
+@font-face {
+    font-family: 'heavitas';
+    src: url(font/Heavitas.ttf);
+}
+@font-face {
+    font-family: 'florensa';
+    src: url(font/Florensa-Demo.ttf);
+}
+@font-face {
+    font-family: 'bebas';
+    src: url(font/BebasKai.ttf);
+}
+@font-face {
+    font-family: 'roboto';
+    src: url(font/Roboto-Regular.ttf);
+}
+@font-face {
+    font-family: 'poppins-reg';
+    src: url(font/Poppins-Regular.ttf);
+}
+@font-face {
+    font-family: 'ubuntu';
+    src: url(font/Ubuntu-Regular.ttf);
+}
+@font-face {
+    font-family: 'oswald-reg';
+    src: url(font/Oswald-Regular.ttf);
+}
+@font-face {
+    font-family: 'oswald-bold';
+    src: url(font/Oswald-Bold.ttf);
+}
