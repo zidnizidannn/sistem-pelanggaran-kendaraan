@@ -19,5 +19,4 @@ while ($row = mysqli_fetch_array($result)) {
 echo json_encode([
     'labels' => $labels,
     'data' => $data,
-    'query' => $query
 ]);

@@ -72,7 +72,6 @@
         </div>
     </div>
 
-    <script src="/js/home.js"></script>
     <script src="/js/chart.js"></script>
     <script>
         function updateDateItem() {
