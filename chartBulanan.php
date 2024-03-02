@@ -65,18 +65,15 @@
         </div>
     </div>
 
-    <script src="/js/home.js"></script>
     <script src="/js/chart.js"></script>
     <script>
         generateDrowdownItem('#bulan.dropdown .dropdown-menu', NAMA_BULAN);
         generateDrowdownItem('#tahun.dropdown .dropdown-menu', 2023, year);
         attachItemClickHandler('bulan', m => {
             month = parseInt(m);
-            updateDateItem();
         });
         attachItemClickHandler('tahun', y => {
             year = parseInt(y);
-            updateDateItem();
         });
 
         document.querySelector('.go').addEventListener('click', function(e) {

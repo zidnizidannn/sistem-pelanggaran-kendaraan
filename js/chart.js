@@ -41,7 +41,6 @@ function attachItemClickHandler(dropdownId, onClick) {
 }
 
 function makeChart(data, label) {
-    console.log(data)
     if(myChart) myChart.destroy();
     data.data = data.data.map(el=>parseInt(el));
     myChart = new Chart(ctx, {
